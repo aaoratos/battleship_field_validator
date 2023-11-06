@@ -12,6 +12,8 @@ def check_ship_part_placement(field: list[list[int]], x: int, y: int) -> bool:
     :param y: ship's Y coordinate on the field
     :return: True if the placement is valid, False if errors were detected (overlap or contact with another ship)
     """
+
+    # TODO: implement the check
     if not field[x][y]:
         raise ValueError(f'No ship part found at [{x}, {y}]')
 
@@ -25,10 +27,10 @@ def print_field(field: list[list[int]]) -> None:
     :param field: two-dimensional array representing the battlefield to print
     :return:
     """
+
     print('  ', *string.ascii_uppercase[:10])
     for i, row in enumerate(field):
-        row_num = f' {i + 1} ' if i < 9 else f'{i + 1} '
-        print(row_num + ' '.join([col and "*" or "." for col in row]))
+        print(f'{i + 1:>2} ' + ' '.join([col and "*" or "." for col in row]))
 
 
 def validate_battlefield(field: list[list[int]]) -> bool:

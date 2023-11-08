@@ -1,18 +1,19 @@
 import string
 
+
 def print_field(field: list[list[int]]) -> None:
-    print('  ', *string.ascii_uppercase[:10])
+    print("  ", *string.ascii_uppercase[:10])
     for i, row in enumerate(field):
-        print(f'{i + 1:>2} ' + ' '.join([col and "*" or "." for col in row]))
+        print(f"{i + 1:>2} " + " ".join([col and "*" or "." for col in row]))
 
 
 def validate_battlefield(field: list[list[int]]) -> bool:
     ships = {1: 0, 2: 0, 3: 0, 4: 0}
-    check_f = lambda f, y, x: x + 1 < 10 and f[y][x+1]
-    check_df = lambda f, y, x: y + 1 < 10 and x + 1 < 10 and f[y+1][x+1]
-    check_db = lambda f, y, x: y + 1 < 10 and x - 1 > 0 and f[y+1][x-1]
+    check_f = lambda f, y, x: x + 1 < 10 and f[y][x + 1]
+    check_df = lambda f, y, x: y + 1 < 10 and x + 1 < 10 and f[y + 1][x + 1]
+    check_db = lambda f, y, x: y + 1 < 10 and x - 1 > 0 and f[y + 1][x - 1]
     check_overlap = lambda f, y, x: check_df(f, y, x) or check_db(f, y, x)
-    y_count = [0] * 10 
+    y_count = [0] * 10
     x_count = 0
 
     # алгоритм полагается на тот факт, что мы идём слева направо, сверху вниз,
@@ -26,7 +27,6 @@ def validate_battlefield(field: list[list[int]]) -> bool:
             # если в клетке нет корабля, то проверяем,
             # его просто нет или он закончился
             if not field[i][j]:
-
                 # если в этой колонке выше был корабль (счётчик частей
                 # корабля по оси Y в этой колонке не пустой),
                 # значит он закончился
@@ -88,4 +88,3 @@ def validate_battlefield(field: list[list[int]]) -> bool:
                     continue
 
     return ships[1] == 4 and ships[2] == 3 and ships[3] == 2 and ships[4] == 1
-                

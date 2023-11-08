@@ -93,10 +93,9 @@ def validate_battlefield(field: list[list[int]]) -> bool:
                     continue
 
     # заносим в счётчик корабли заканчивающиеся на последней строке, если есть
-    for i in y_count:
-        if i > 0:
-            if i > 4:
-                return False
-            ships[i] += 1
+    for count in filter(lambda elem: elem > 0, y_count):
+        if count > 4:
+            return False
+        ships[count] += 1
 
     return ships[1] == 4 and ships[2] == 3 and ships[3] == 2 and ships[4] == 1

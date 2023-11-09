@@ -48,7 +48,7 @@ def validate_battlefield(field: list[list[int]]) -> bool:
                     # проверяем, не слишком ли много частей мы насчитали
                     if x_count > 4:
                         return False
-                    # увеличиваем сётчик кораблей соответствующего размера
+                    # увеличиваем счётчик кораблей соответствующего размера
                     ships[x_count] += 1
                     # и обнуляем счётчик частей корабля по оси X
                     x_count = 0
@@ -70,7 +70,7 @@ def validate_battlefield(field: list[list[int]]) -> bool:
                     continue
 
                 # если в этом ряду слева был корабль,
-                # то увеличивеаем счётчик частей по оси X
+                # то увеличиваем счётчик частей по оси X
                 elif x_count:
                     x_count += 1
                     # если мы на последней колонке, то обнуляем счётчик по оси X
@@ -100,4 +100,5 @@ def validate_battlefield(field: list[list[int]]) -> bool:
             return False
         ships[count] += 1
 
+    # проверяем соответствует ли количество кораблей разных типов согласно правилам игры
     return ships[1] == 4 and ships[2] == 3 and ships[3] == 2 and ships[4] == 1

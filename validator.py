@@ -100,5 +100,5 @@ def validate_battlefield(field: list[list[int]]) -> bool:
             return False
         ships[count] += 1
 
-    # проверяем соответствует ли количество кораблей разных типов согласно правилам игры
+    # проверяем количество кораблей разных типов согласно правилам игры
     return ships[1] == 4 and ships[2] == 3 and ships[3] == 2 and ships[4] == 1
